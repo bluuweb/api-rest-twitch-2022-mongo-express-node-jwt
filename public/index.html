@@ -21,16 +21,19 @@
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
                 try {
-                    const res = await fetch("/api/v1/auth/login", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            email: email.value,
-                            password: password.value,
-                        }),
-                    });
+                    const res = await fetch(
+                        "http://localhost:5000/api/v1/auth/login",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                email: email.value,
+                                password: password.value,
+                            }),
+                        }
+                    );
                     console.log(res.ok, res.status);
 
                     const { token } = await res.json();

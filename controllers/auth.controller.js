@@ -27,7 +27,6 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    console.log("Entro aquí===???");
     try {
         const { email, password } = req.body;
 

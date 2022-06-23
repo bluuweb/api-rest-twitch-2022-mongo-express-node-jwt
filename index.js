@@ -4,8 +4,6 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import cors from "cors";
 
-// console.log("😎😎😎 =>", process.env.URI_MONGO);
-
 import authRouter from "./routes/auth.route.js";
 import linkRouter from "./routes/link.route.js";
 import redirectRouter from "./routes/redirect.route.js";
@@ -25,6 +23,7 @@ app.use(
                 "Error de CORS origin: " + origin + " No autorizado!"
             );
         },
+        credentials: true,
     })
 );
 

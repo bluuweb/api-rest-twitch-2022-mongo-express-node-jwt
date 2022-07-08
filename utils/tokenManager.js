@@ -17,16 +17,17 @@ export const generateRefreshToken = (uid, res) => {
             expiresIn,
         });
 
-        // res.cookie("refreshToken", refreshToken, {
-        //     httpOnly: true,
-        //     secure: !(process.env.MODO === "developer"),
-        //     expires: new Date(Date.now() + expiresIn * 1000),
-        // });
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
-            secure: true,
+            secure: !(process.env.MODO === "developer"),
             expires: new Date(Date.now() + expiresIn * 1000),
+            sameSite: "none",
         });
+        // res.cookie("refreshToken", refreshToken, {
+        //     httpOnly: true,
+        //     secure: true,
+        //     expires: new Date(Date.now() + expiresIn * 1000),
+        // });
     } catch (error) {
         console.log(error);
     }
